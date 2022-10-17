@@ -10,4 +10,9 @@ describe('Rest API Testing using Cypress', () => {
     cy.request('https://pokeapi.co/api/v2/pokemon/25/').as('APIResponse')
     cy.get('@APIResponse').its('status').should('eq',200)
   })
+
+  it('Validate Name Value',()=>{
+    cy.request('https://pokeapi.co/api/v2/pokemon/25/').as('APIResponse')
+    cy.get('@APIResponse').its('body').should('include',{name:'Pardeep'})
+  })
 })
