@@ -17,18 +17,30 @@ describe('Rest API Testing using Cypress', () => {
       // expect(res.body.data.name).to.eq('Patricia')
     })
   })
-  it ('Get User by UserID',()=>{
+  it.only ('Get User by UserID',()=>{
     cy.request({
       methos:'GET',
-      url:'https://gorest.co.in/public-api/users/2',
+      url:'https://gorest.co.in/public-api/users/',
       Headers:{
         'authorization':'Bearer 779dd21efd508709c535821dd39dec403e128c2901263bce7da2aa701541aa89	'
       }
     }).then((res)=>{
-      expect(res.status).to.eq(200)
-      let responseData =(res.body.data)
-      cy.log(responseData)
+      console.log(JSON.stringify(res))
+      // expect(res.status).to.eq(200)
+      // let responseData =(res.body.data.name)
+      // cy.log(responseData)
       // expect(res.body.data.name).to.eq('Patricia')
+      const id = res.body.data 
+      // console.log (id)
+      return id
+    }).then((id)=>{
+      cy.request({
+        method:'GET',
+        url:'https://gorest.co.in/public/v1/users'+id,
+        headers:{'Authorization':'Bearer 779dd21efd508709c535821dd39dec403e128c2901263bce7da2aa701541aa89'}
+        }).then((res)=>{
+          expect.
+        })
     })
   })
 })
