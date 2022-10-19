@@ -33,14 +33,6 @@ describe('Rest API Testing using Cypress', () => {
       const id = res.body.data 
       // console.log (id)
       return id
-    }).then((id)=>{
-      cy.request({
-        method:'GET',
-        url:'https://gorest.co.in/public/v1/users'+id,
-        headers:{'Authorization':'Bearer 779dd21efd508709c535821dd39dec403e128c2901263bce7da2aa701541aa89'}
-        }).then((res)=>{
-          expect.
-        })
     })
   })
 })
